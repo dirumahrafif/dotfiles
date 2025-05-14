@@ -1,0 +1,140 @@
+# Set mod key (Mod4 = Windows key)
+set $mod Mod4
+
+# Font
+# font pango:monospace 10
+font pango:monospace 12
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# Set default terminal
+bindsym $mod+Return exec gnome-terminal
+
+# Reload & Restart i3
+bindsym $mod+Shift+c reload          # ⟵ Reload config
+bindsym $mod+Shift+r restart         # ⟵ Restart i3
+
+# Exit i3 (logout)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Keluar dari i3?' -b 'Ya' 'i3-msg exit'"
+
+
+# Workspace keybindingsO
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split
+bindsym $mod+v split v
+bindsym $mod+b split h
+
+# Fullscreen toggle
+bindsym $mod+f fullscreen toggle
+
+# Kill window
+bindsym $mod+Shift+q kill
+
+# Floating toggle
+bindsym $mod+Shift+space floating toggle
+
+# Focus parent/container
+bindsym $mod+a focus parent
+
+# Layout toggle
+bindsym $mod+space layout toggle split
+
+# Change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Start i3bar and i3blocks
+# bar {
+#    status_command i3blocks
+#    position top
+#    font pango:monospace 10
+#    height 35
+# }
+
+# tambahkan gap
+gaps inner 3
+gaps outer 3
+smart_gaps on
+
+# warna windows
+client.focused          #89b4fa #89b4fa #1e1e2e #ffffff #89b4fa
+client.unfocused        #313244 #313244 #1e1e2e #a6adc8 #313244
+client.focused_inactive #45475a #45475a #1e1e2e #a6adc8 #45475a
+client.urgent           #f38ba8 #f38ba8 #1e1e2e #ffffff #f38ba8
+
+# Menjalankan Rofi (mode aplikasi)
+bindsym $mod+d exec rofi -show drun
+
+# hilangkan title
+for_window [class=".*"] border pixel 2
+
+# deteksi kalau misalkan ada monitor terpasang
+
+# install autorandr dulu. apt-get install autorand
+exec --no-startup-id autorandr --change
+
+# pengaturan ukuran huruf
+# nano ~/.Xresources
+# Xft.dpi: 120
+# setelah simpan jalankan xrdb -merge ~/.Xresources
+# lalu logout
+
+# atur supaya menggunakan aturan background sebelumnya
+exec --no-startup-id nitrogen --restore
+# jalankan polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+# jalankan picom untuk transparan
+exec --no-startup-id picom
+
+# atur volume
+bindsym $mod+Shift+Up exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Shift+Down exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
