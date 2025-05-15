@@ -1,2 +1,2 @@
 # Baca saya
-Silakan bisa didownolan kemudian masukkan ke directory .config sesuai kebutuhan
+Silakan bisa di-download kemudian masukkan ke directory `.config` sesuai kebutuhan
