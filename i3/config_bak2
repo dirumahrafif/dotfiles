@@ -1,0 +1,102 @@
+# Font
+font pango:JetBrainsMono Nerd Font 10
+
+# Mod key (Mod4 = Super/Windows key)
+set $mod Mod4
+
+# Gaps (butuh i3-gaps)
+gaps inner 10
+gaps outer 10
+smart_gaps on
+
+# Colors - Simpel dan elegan (berbasis Nord)
+client.focused          #5e81ac #3b4252 #eceff4 #5e81ac
+client.focused_inactive #4c566a #2e3440 #d8dee9 #4c566a
+client.unfocused        #434c5e #2e3440 #d8dee9 #434c5e
+client.urgent           #bf616a #bf616a #eceff4 #bf616a
+client.placeholder      #2e3440 #2e3440 #d8dee9 #2e3440
+
+# Window border
+new_window pixel 2
+new_float  pixel 2
+
+# Startup applications
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+
+# Keybindings - dasar
+bindsym $mod+Return exec alacritty
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+c reload
+bindsym $mod+f fullscreen toggle
+
+# Floating toggle
+bindsym $mod+Shift+space floating toggle
+
+# Split layout
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Move focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# Move window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+# Status bar
+bar {
+    status_command i3blocks
+    font pango:JetBrainsMono Nerd Font 10
+    position top
+    colors {
+        background #2e3440
+        statusline #d8dee9
+        separator  #4c566a
+
+        focused_workspace  #5e81ac #5e81ac #eceff4
+        inactive_workspace #3b4252 #3b4252 #d8dee9
+        urgent_workspace   #bf616a #bf616a #eceff4
+    }
+}
+
+# Floating apps (optional)
+for_window [class="^.*"] border pixel 2
+for_window [class="confirm"] floating enable
+for_window [class="dialog"] floating enable
+for_window [class="download"] floating enable
+for_window [class="error"] floating enable
+for_window [class="file_progress"] floating enable
+for_window [class="notification"] floating enable
+for_window [class="splash"] floating enable
+for_window [class="toolbar"] floating enable
+
