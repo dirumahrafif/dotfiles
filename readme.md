@@ -1,2 +1,2 @@
 # Baca saya
-Silakan bisa di-download kemudian masukkan ke directory `.config` sesuai kebutuhan
+Folder di atas adalah pengaturan yang saya gunakan di Linux Mint yang saya punya. Akan diperbaharui ketika ada yang baru. Silakan bisa di-download kemudian masukkan ke directory `.config` sesuai kebutuhan
