@@ -10,10 +10,6 @@ bindsym $mod+Return exec gnome-terminal
 # Restart i3
 bindsym $mod+Shift+r restart         # ⟵ Restart i3
 
-# Exit i3 (logout)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Keluar dari i3?' -b 'Ya' 'i3-msg exit'"
-
-
 # Workspace keybindingsO
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -54,14 +50,8 @@ bindsym $mod+Shift+l move right
 bindsym $mod+v split v
 bindsym $mod+b split h
 
-# Fullscreen toggle
-bindsym $mod+f fullscreen toggle
-
 # Kill window
 bindsym $mod+Shift+q kill
-
-# Floating toggle
-bindsym $mod+Shift+space floating toggle
 
 # Resize mode
 mode "resize" {
@@ -80,11 +70,13 @@ gaps inner 5
 gaps outer 5
 # smart_gaps on
 
-# Menjalankan Rofi (mode aplikasi)
-bindsym $mod+d exec rofi -show drun -font "monospace 14" -lines 10 -width 30
-
 # hilangkan title
 for_window [class=".*"] border none
+
+# tambahan lainnya
+
+# Menjalankan Rofi (mode aplikasi)
+bindsym $mod+d exec rofi -show drun -font "monospace 14" -lines 10 -width 30
 
 # install autorandr dulu. apt-get install autorand
 exec --no-startup-id autorandr --change
