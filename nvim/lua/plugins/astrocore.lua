@@ -20,6 +20,7 @@ return {
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
+    -- documentation
     diagnostics = {
       virtual_text = true,
       underline = true,
